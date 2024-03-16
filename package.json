@@ -1,0 +1,13 @@
+{
+  "name": "forta-fode-sla-checker",
+  "version": "0.1.1",
+  "scripts": {
+    "start": "node --env-file .env app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3",
+    "node-telegram-bot-api": "^0.63.0",
+    "npm": "^10.5.0"
+  }
+}
