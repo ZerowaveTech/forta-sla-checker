@@ -31,6 +31,5 @@ bot.onText(/\/monitor/, async (msg) => {
             bot.sendMessage(msg.chat.id, `${new Date().toISOString()} : ${scannerAddress} SLA Score ${slaScrore} Please check your scanner node`)
             return
         }
-        bot.sendMessage(msg.chat.id, `${new Date().toISOString()} : ${scannerAddress} SLA Score ${slaScrore}`)
     })
 })
