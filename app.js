@@ -17,7 +17,7 @@ const fetchSLA = async (scanneraddress,startTime, endTime) => {
 
 const bot = new TelegramBot(token, {polling: true});
 
-bot.onText(/\/start/, () => {
+bot.onText(/\/start/, (msg) => {
     bot.sendMessage(msg.chat.id, 
         'Welcome to Checker for Forta Node Scanner\nFor Help "\help"\nFor Monitor Scanner Node : \monitor')
 })
@@ -27,9 +27,10 @@ bot.onText(/\/monitor/, async (msg) => {
     cron.schedule('*/20 * * * * *', async () => {
         const getSla = await fetchSLA(scannerAddress)
         const slaScrore = getSla.statistics.avg
-        if(slaScrore <= 0.85){
+        if(slaScrore <= 0.80){
             bot.sendMessage(msg.chat.id, `${new Date().toISOString()} : ${scannerAddress} SLA Score ${slaScrore} Please check your scanner node`)
             return
         }
     })
+    bot.sendMessage(msg.chat.id, `Success Input Adress : ${scannerAddress}`)
 })
